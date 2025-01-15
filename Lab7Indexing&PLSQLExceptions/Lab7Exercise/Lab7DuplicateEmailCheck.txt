@@ -1,0 +1,7 @@
+create or replace NONEDITIONABLE PROCEDURE LAB7DUPLICATEEMAILCHECK AS 
+BEGIN
+    insert into Student values ('22330035','Jinhai','Jin','hujh53','11111111',3.0,'COMP','2022');
+    
+    exception when DUP_VAL_ON_INDEX then
+        dbms_output.put_line('### Tried to insert duplicate email into the Student table.');
+END LAB7DUPLICATEEMAILCHECK;
