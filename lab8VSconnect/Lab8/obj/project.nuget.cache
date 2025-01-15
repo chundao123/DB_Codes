@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "5HHafByaaNkq82ZOIX93AYct4zkmLoeWrWvpRASFoanDBwTg6aizqLoQj0a6qJRxbwdCMHfiq1iuCsWvLmnFCw==",
+  "success": true,
+  "projectFilePath": "D:\\大三上课程资料\\数据库实验\\labs\\lab8VSconnect\\Lab8\\Lab8.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hjhzjbs\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\hjhzjbs\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.31\\microsoft.netcore.app.host.win-x64.3.1.31.nupkg.sha512"
+  ],
+  "logs": []
+}
