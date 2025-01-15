@@ -1,0 +1,1 @@
+insert into Student values ('22330034','Jinhai','Hu','hujh53','00000000',0.00,'COMP','2022');

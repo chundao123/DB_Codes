@@ -1,0 +1,240 @@
+
+*** Creating Lab 5 database ***
+
+*** Inserting your student and enrollment records ***
+提交完成。
+
+在行: 45 (文件 @ E:\coding\ZhengDataBase\labs\Lab5DDL-DML-Constraints\Lab5Exercise\Lab5AddConstraints.sql 中) 上
+开始执行命令时出错 -
+alter table Student add constraint CHK_admissionYear check (regexp_like(admisstionYear, '^2[0-9]{3}$'))
+错误报告 -
+ORA-00904: "ADMISSTIONYEAR": 标识符无效
+
+https://docs.oracle.com/error-help/db/ora-00904/00904. 00000 -  "%s: invalid identifier"
+*Cause:    The identifier or column name entered was invalid.
+*Action:   Ensure the following
+
+<<<<<---------- STUDENTS WHOSE AVERAGE GRADE IS >90 ---------->>>>>
+
+STUDENTI FIRSTNAME            LASTNAME                  AVG(GRADE)
+-------- -------------------- ------------------------- ----------
+22330014 Fengyuan             Cui                            92.58
+28918856 Alan                 Turing                          91.1
+
+<<<<<---------- TESTS FOR REFERENTIAL INTEGRITY CONSTRAINTS ---------->>>>>
+
+*** 1. REFERENTIAL INTEGRITY on Facility table: No matching department id in Department table.
+
+在行: 26 上开始执行命令时出错 -
+insert into Facility values ('CHEM', 2, 5)
+错误报告 -
+ORA-02291: 违反完整约束条件 (SYS.SYS_C009285) - 未找到父项关键字
+
+https://docs.oracle.com/error-help/db/ora-02291/
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-02291/
+
+*** 2. REFERENTIAL INTEGRITY on Student table: No matching departmentId in Department table.
+
+在行: 31 上开始执行命令时出错 -
+insert into Student values ('22222222', '*** Student ***', 'RI: No matching dept id', 'afong', '22223334', 0.00, 'PHYS', '2016')
+错误报告 -
+ORA-02291: 违反完整约束条件 (SYS.SYS_C009286) - 未找到父项关键字
+
+https://docs.oracle.com/error-help/db/ora-02291/
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-02291/
+
+*** 3. REFERENTIAL INTEGRITY on Student table: Should delete 1 row and select 0 rows.
+
+1行已删除。
+
+
+已选择 0 行。
+
+
+*** 4. REFERENTIAL INTEGRITY on Course table: No matching department id in Department table.
+
+在行: 41 上开始执行命令时出错 -
+insert into Course values ('PHYS4311', '*** ', '*** Course ***', 'RI: No matching dept id')
+错误报告 -
+ORA-02291: 违反完整约束条件 (SYS.SYS_C009287) - 未找到父项关键字
+
+https://docs.oracle.com/error-help/db/ora-02291/
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-02291/
+
+*** 5. REFERENTIAL INTEGRITY on EnrollsIn table: No matching course id in Course table.
+
+在行: 46 上开始执行命令时出错 -
+insert into EnrollsIn values ('13456789', 'PHYS4311', 80.6)
+错误报告 -
+ORA-02291: 违反完整约束条件 (SYS.SYS_C009289) - 未找到父项关键字
+
+https://docs.oracle.com/error-help/db/ora-02291/
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-02291/
+
+*** 6. REFERENTIAL INTEGRITY on EnrollsIn table: No matching student id in Student table.
+
+在行: 50 上开始执行命令时出错 -
+insert into EnrollsIn values ('12345678', 'COMP3311', 75.6)
+错误报告 -
+ORA-02291: 违反完整约束条件 (SYS.SYS_C009288) - 未找到父项关键字
+
+https://docs.oracle.com/error-help/db/ora-02291/
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-02291/
+
+<<<<<---------- TESTS FOR CHECK CONSTRAINTS ---------->>>>>
+
+*** 7. CHECK CONSTRAINT on Department table: departmentId must be one of BUS, COMP, ELEC, HUMA or MATH.
+
+在行: 57 上开始执行命令时出错 -
+insert into Department values ('DEPT','*** Department table: CHK: deptId','0000')
+错误报告 -
+ORA-02290: 违反检查约束条件 (SYS.CHK_DEPARTMENTID)
+
+https://docs.oracle.com/error-help/db/ora-02290/
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-02290/
+
+*** 8. CHECK CONSTRAINT on Student table: studentId must be all digits.
+
+在行: 62 上开始执行命令时出错 -
+insert into Student values ('234567*9', '*** Student table:', 'CHK: studentId', 'afong', '22223334', 0.00, 'COMP', '2016')
+错误报告 -
+ORA-02290: 违反检查约束条件 (SYS.CHK_STUDENTID)
+
+https://docs.oracle.com/error-help/db/ora-02290/
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-02290/
+
+*** 9. CHECK CONSTRAINT on Student table: studentId must be exactly 8 digits.
+
+在行: 67 上开始执行命令时出错 -
+insert into Student values ('234567', '*** Student table:', 'CHK: studentId', 'bfong', '22223334', 0.00, 'COMP', '2016')
+错误报告 -
+ORA-02290: 违反检查约束条件 (SYS.CHK_STUDENTID)
+
+https://docs.oracle.com/error-help/db/ora-02290/
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-02290/
+
+*** 10. CHECK CONSTRAINT on Student table: phoneNo must be all digits.
+
+在行: 72 上开始执行命令时出错 -
+insert into Student values ('33333333', '*** Student table:', 'CHK: studentId', 'cfong', '222a3334', 0.00, 'COMP', '2016')
+错误报告 -
+ORA-02290: 违反检查约束条件 (SYS.CHK_PHONENO)
+
+https://docs.oracle.com/error-help/db/ora-02290/
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-02290/
+
+*** 11. CHECK CONSTRAINT on Student table: phoneNo must be exactly 8 digits.
+
+在行: 77 上开始执行命令时出错 -
+insert into Student values ('44444444', '*** Student table:', 'CHK: studentId', 'dfong', '2222', 0.00, 'COMP', '2016')
+错误报告 -
+ORA-02290: 违反检查约束条件 (SYS.CHK_PHONENO)
+
+https://docs.oracle.com/error-help/db/ora-02290/
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-02290/
+
+*** 12. CHECK CONSTRAINT on Student table: cga must be between 0 and 4.
+
+在行: 82 上开始执行命令时出错 -
+insert into Student values ('55555555', '*** Student table:', 'CHK: cga', 'ali', '25524334', 4.50, 'COMP', '2016')
+错误报告 -
+ORA-02290: 违反检查约束条件 (SYS.CHK_CGA)
+
+https://docs.oracle.com/error-help/db/ora-02290/
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-02290/
+
+*** 13. CHECK CONSTRAINT on Student table: admissionYear must be all digits.
+
+在行: 87 上开始执行命令时出错 -
+insert into Student values ('77777777', '*** Student table:', 'CHK: admissionYear', 'bli', '25524334', 4.50, 'COMP', '200a')
+错误报告 -
+ORA-02290: 违反检查约束条件 (SYS.CHK_CGA)
+
+https://docs.oracle.com/error-help/db/ora-02290/
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-02290/
+
+*** 14. CHECK CONSTRAINT on Student table: admissionYear has exactly 4 digits.
+
+在行: 92 上开始执行命令时出错 -
+insert into Student values ('88888888', '*** Student table:', 'CHK: admissionYear', 'cli', '25524334', 4.50, 'COMP', '200')
+错误报告 -
+ORA-02290: 违反检查约束条件 (SYS.CHK_CGA)
+
+https://docs.oracle.com/error-help/db/ora-02290/
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-02290/
+
+*** 15. CHECK CONSTRAINT on Student table: admissionYear begins with a 2.
+
+在行: 97 上开始执行命令时出错 -
+insert into Student values ('99999999', '*** Student table:', 'CHK: admissionYear', 'dli', '25524334', 4.50, 'COMP', '1999')
+错误报告 -
+ORA-02290: 违反检查约束条件 (SYS.CHK_CGA)
+
+https://docs.oracle.com/error-help/db/ora-02290/
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-02290/
+
+*** 16. CHECK CONSTRAINT on Course table: course id must be exactly four uppercase letters followed by exactly four digits.
+
+在行: 102 上开始执行命令时出错 -
+insert into course values ('comp3311','COMP','** Course Table: CHK: courseId','Test Man')
+错误报告 -
+ORA-02290: 违反检查约束条件 (SYS.CHK_COURSEID)
+
+https://docs.oracle.com/error-help/db/ora-02290/
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-02290/
+
+*** 17. CHECK CONSTRAINT on EnrollsIn table: grade must be between 0 and 100.
+
+在行: 107 上开始执行命令时出错 -
+insert into EnrollsIn values ('99987654', 'COMP3311', 100.1)
+错误报告 -
+ORA-02290: 违反检查约束条件 (SYS.CHK_GRADE)
+
+https://docs.oracle.com/error-help/db/ora-02290/
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-02290/
+
+<<<<<---------- TEST FOR UNIQUE CONSTRAINT ---------->>>>>
+
+*** 18. CHECK CONSTRAINT on Student table: email must be unique.
+
+在行: 114 上开始执行命令时出错 -
+insert into Student values ('10101010', '*** Student table:', 'CHK: eEmail', 'csgrande', '22223334', 0.00, 'COMP', '2018')
+错误报告 -
+ORA-00001: 违反唯一约束条件 (SYS.UNIQUE_EMAIL)
+
+https://docs.oracle.com/error-help/db/ora-00001/
+
+More Details :
+https://docs.oracle.com/error-help/db/ora-00001/
